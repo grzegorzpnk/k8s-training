@@ -1,0 +1,21 @@
+apiVersion: apps/v1 #k8s api version
+kind: Deployment   #what we want to deploy - type
+metadata:         #metadata of our object - deployment
+  name: nginx-deployment  # name of deployment
+  labels:                 #labels section for deployment ( is a list)
+    app: nginx
+spec:             #specification of deployment - what's inside
+  replicas: 3     #replicas of pods
+  selector:
+    matchLabels:
+      app: nginx
+  template:        #pod specification inside deployment
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80

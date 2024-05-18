@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: cicd-role
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods", "services"]
+  verbs: ["*"]
+- apiGroups: ["apps"] # "" indicates the core API group
+  resources: ["deployments", "statefulSets"]
+  verbs: ["get", "delete", "list"]

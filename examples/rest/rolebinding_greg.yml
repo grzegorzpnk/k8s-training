@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deployment-viewer-binding-greg
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: greg
+  namespace: default
+roleRef:
+  kind: Role
+  name: deployment-viewer
+  apiGroup: rbac.authorization.k8s.io
